@@ -1,0 +1,62 @@
+# learn to implement the model f_w,b for linear regression with one variable
+
+#numpy常用于科学计算的库
+#matplotlib常用于绘制数据的库
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+#plt.style.use('./deeplearning.mplstyle')
+
+#数据集
+x_train = np.array([1.0, 2.0])
+y_train = np.array([300.0, 500.0])
+print(f"x_train = {x_train}")
+print(f"y_train = {y_train}")
+
+# m 数据集的大小
+print(f"x_train.shape:{x_train.shape}") #这种方式不行
+m = x_train.shape[0]
+print(f"number of training examples is :{m}")
+m1 = len(x_train)
+print(f"number of training examples is :{m1}")
+
+#训练
+i = 0
+x_i = x_train[i]
+y_i = y_train[i]
+print(f"(x^({i}),y^({i})) = ({x_i},{y_i})")
+
+#h绘制数据
+#plot the data points, marker是图标样式，c是颜色
+'''
+plt.scatter(x_train, y_train, marker='x', c='r')
+plt.title("housing prices")
+plt.ylabel('price(in 1000s of dollars)')
+plt.xlabel('size (1000 sqft)')
+plt.show()
+'''
+
+#模型建立
+w = 200
+b = 100
+print(f"w:{w}")
+print(f"b:{b}")
+#预测模型计算
+def compute_model_output(x, w, b):
+
+    m = x.shape[0]
+    f_wb = np.zeros(m)
+
+    for i in range(m):
+        f_wb[i] = w*x[i]+b             #代码向量化
+    return f_wb
+
+tmp_f_wb = compute_model_output(x_train,w,b)
+plt.plot(x_train, tmp_f_wb, c='b', label='our prediction') #线图
+plt.scatter(x_train, y_train, marker='x', c='r', label='actual values') #散点图
+plt.title("housing prices")
+plt.ylabel('price(in 1000s of dollars)')
+plt.xlabel('size (1000 sqft)')
+plt.legend()
+plt.show()
