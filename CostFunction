@@ -1,0 +1,29 @@
+单变量线性回归的代价函数
+
+import numpy as np
+#%matplotlib widget
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D  #创建三维坐标轴
+
+x_train = np.array([1.0, 1.7])
+y_train = np.array([200.0, 300.0])
+
+#计算代价函数
+def compute_cost(x,y,w,b):
+    m = x.shape[0]
+    n = w.shape[0]
+
+    cost = np.zeros((2, 2))
+
+    for i in range(n):
+        for j in range(m):
+
+            cost[i][j] =(1/(2*m))*(((w[i]*x[j]+b[i])-y[j])**2)
+            print(f"{cost[i][j]}")
+    return cost[i][j]
+
+#plt.intuition(x_train, y_train_)
+
+
+w = np.array([100,120])
+b = np.array([0,10])
