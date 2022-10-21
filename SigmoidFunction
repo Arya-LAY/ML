@@ -1,0 +1,26 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+input_array = np.array([1, 2, 3])
+# 计算e^z
+exp_array = np.exp(input_array)
+print("input to exp:", input_array)
+print(f"output to exp:{exp_array}")
+
+# 计算g(z)函数
+def sigmoid(z):
+    g = 1/(1 + np.exp((-z)))
+    return g
+
+z_tmp = np.arange(-10,11)
+y = sigmoid(z_tmp)
+# print(f"z_tmp:{z_tmp}")
+# print(f"g(z_tmp):{y}")
+print(f"z,g:{np.c_[z_tmp, y]}") #把输入输出一组对应起来显示
+
+fig, ax = plt.subplots(1,1,figsize=(5,3))
+ax.plot(z_tmp, y, c="b")
+ax.set_title("Sigmoid Function")
+ax.set_xlabel('z')
+ax.set_ylabel('sigmoid(z)')
+plt.show()
